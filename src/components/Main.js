@@ -11,15 +11,15 @@ export default function Main() {
   const [isError, setIsError] = useState(false);
 
   useEffect(() => {
+    console.log(query);
     const fetchData = async () => {
       setIsError(false);
       setIsLoading(true);
       try {
         const result = await axios(url);
-        console.log(result.data);
-        setData(result.data);
+        const translated = result.data.contents.translated;
+        setData(translated);
       } catch (error) {
-        console.log(error);
         setIsError(true);
       }
       setIsLoading(false);
@@ -34,7 +34,15 @@ export default function Main() {
         The fan favourite Jedi Master has always had a special place in Star
         Wars fans heart
       </h2>
-      <form className="translateForm">
+      <form
+        className="translateForm"
+        onSubmit={event => {
+          setUrl(
+            `https://api.funtranslations.com/translate/yoda.json?text=${query}`
+          );
+          event.preventDefault();
+        }}
+      >
         <input
           type="text"
           className="translateForm--input"
@@ -42,14 +50,7 @@ export default function Main() {
           onChange={event => setQuery(event.target.value)}
           value={query}
         />
-        <button
-          className="translateForm--button"
-          onClick={() =>
-            setUrl(
-              `https://api.funtranslations.com/translate/yoda.json?text=${query}`
-            )
-          }
-        >
+        <button className="translateForm--button" type="submit">
           Translate Here!
         </button>
       </form>
@@ -62,6 +63,3 @@ export default function Main() {
     </div>
   );
 }
-
-//onClick to take data from form and send it to url
-//attach response to h3
