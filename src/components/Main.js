@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import yoda from "../assets/yoda.svg";
+import "../styles/Main.scss";
 
 export default function Main() {
   const [data, setData] = useState("");
@@ -28,14 +30,14 @@ export default function Main() {
   }, [url]);
 
   return (
-    <div>
-      <h1>Learn How to Speak Like Yoda</h1>
-      <h2>
-        The fan favourite Jedi Master has always had a special place in Star
-        Wars fans heart
-      </h2>
+    <div className="main">
+      <img className="main--image" src={yoda} alt="Clipart display of Yoda" />
+      <h1 className="main--title">Talk Like Yoda</h1>
+      <h2>Ever wish you had the wisdom of one of the greatest Jedi Masters?</h2>
+      <h2>Maybe it comes from the slow methodical way he speaks!</h2>
+      <h2>Try it below and see if it helps you:</h2>
       <form
-        className="translateForm"
+        className="main--translateForm"
         onSubmit={event => {
           setUrl(
             `https://api.funtranslations.com/translate/yoda.json?text=${query}`
@@ -43,22 +45,22 @@ export default function Main() {
           event.preventDefault();
         }}
       >
-        <input
+        <textarea
           type="text"
-          className="translateForm--input"
+          className="main--translateForm__input"
           name="userText"
           onChange={event => setQuery(event.target.value)}
-          value={query}
+          placeholder={query}
         />
-        <button className="translateForm--button" type="submit">
-          Translate Here!
+        <button className="main--translateForm__button" type="submit">
+          Translate
         </button>
       </form>
       {isError && <div>Something went wrong ...</div>}
       {isLoading ? (
         <div>Loading ...</div>
       ) : (
-        <h3 className="translatedText">{data}</h3>
+        <h3 className="main--translatedText">{data}</h3>
       )}
     </div>
   );

@@ -1,0 +1,66 @@
+@import url("https://fonts.googleapis.com/css?family=Comic+Neue&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Luckiest+Guy&display=swap");
+
+$yodaMain: #d7d8c680;
+$yodaSecondary: #c0956f;
+$yodaAccent: #87bc4c;
+
+@mixin primaryFont {
+  font-family: "Comic Neue";
+}
+
+@mixin accentFont {
+  font-family: "Luckiest Guy";
+}
+
+.main {
+  height: 100vh;
+  padding: 4rem;
+  background-color: $yodaMain;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  @include primaryFont;
+}
+
+.main--image {
+  height: 28rem;
+}
+
+.main--title {
+  margin: 1rem 0;
+  color: $yodaSecondary;
+  @include accentFont;
+  font-size: 7.5rem;
+}
+
+.main--translateForm {
+  //height: 10rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.main--translateForm__input {
+  height: 6rem;
+  width: 35rem;
+  margin: 1rem 0;
+  padding: 1rem;
+  @include primaryFont;
+  font-size: 1.25rem;
+  border: solid thin $yodaSecondary;
+  border-radius: 10px;
+}
+
+.main--translateForm__button {
+  height: 4rem;
+  width: 50%;
+  border: solid thin $yodaSecondary;
+  border-radius: 10px;
+  background-color: $yodaAccent;
+  color: white;
+  @include primaryFont;
+  font-size: 2rem;
+  font-weight: bold;
+  align-self: center;
+}
