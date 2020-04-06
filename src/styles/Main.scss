@@ -1,12 +1,15 @@
-@import url("https://fonts.googleapis.com/css?family=Comic+Neue&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Open+Sans&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Luckiest+Guy&display=swap");
 
-$yodaMain: #d7d8c680;
+$yodaBackground: #d7d8c680;
+$yodaMain: #619626;
+$yodaText: #4e5e3c;
+$yodaDarker: #5c7044;
 $yodaSecondary: #c0956f;
 $yodaAccent: #87bc4c;
 
 @mixin primaryFont {
-  font-family: "Comic Neue";
+  font-family: "Open Sans";
 }
 
 @mixin accentFont {
@@ -14,14 +17,15 @@ $yodaAccent: #87bc4c;
 }
 
 .main {
-  height: 100vh;
+  height: 100%;
   padding: 4rem;
-  background-color: $yodaMain;
+  background-color: $yodaBackground;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   @include primaryFont;
+  color: $yodaText;
 }
 
 .main--image {
@@ -30,13 +34,13 @@ $yodaAccent: #87bc4c;
 
 .main--title {
   margin: 1rem 0;
+  -webkit-text-stroke: 1px $yodaDarker;
   color: $yodaSecondary;
   @include accentFont;
   font-size: 7.5rem;
 }
 
 .main--translateForm {
-  //height: 10rem;
   display: flex;
   flex-direction: column;
 }
@@ -50,6 +54,7 @@ $yodaAccent: #87bc4c;
   font-size: 1.25rem;
   border: solid thin $yodaSecondary;
   border-radius: 10px;
+  resize: none;
 }
 
 .main--translateForm__button {
@@ -61,6 +66,16 @@ $yodaAccent: #87bc4c;
   color: white;
   @include primaryFont;
   font-size: 2rem;
-  font-weight: bold;
+  font-weight: 900;
   align-self: center;
+}
+
+.main--translatedText {
+  width: 55rem;
+  padding: 1rem;
+  -webkit-text-stroke: 1px $yodaDarker;
+  color: $yodaMain;
+  @include accentFont;
+  font-weight: bold;
+  font-size: 3.5rem;
 }

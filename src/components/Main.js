@@ -34,8 +34,8 @@ export default function Main() {
       <img className="main--image" src={yoda} alt="Clipart display of Yoda" />
       <h1 className="main--title">Talk Like Yoda</h1>
       <h2>Ever wish you had the wisdom of one of the greatest Jedi Masters?</h2>
-      <h2>Maybe it comes from the slow methodical way he speaks!</h2>
-      <h2>Try it below and see if it helps you:</h2>
+      <h2>Maybe it comes from the slow, methodical way he speaks!</h2>
+      <h2>Try it below to see:</h2>
       <form
         className="main--translateForm"
         onSubmit={event => {
@@ -53,14 +53,14 @@ export default function Main() {
           placeholder={query}
         />
         <button className="main--translateForm__button" type="submit">
-          Translate
+          TRANSLATE
         </button>
       </form>
-      {isError && <div>Something went wrong ...</div>}
+      {isError && <h2>Oh no, something went wrong! Please try again..</h2>}
       {isLoading ? (
-        <div>Loading ...</div>
+        <h2>Loading ...</h2>
       ) : (
-        <h3 className="main--translatedText">{data}</h3>
+        <h3 className="main--translatedText">" {data} "</h3>
       )}
     </div>
   );
